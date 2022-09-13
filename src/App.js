@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import FireBall from "./component/FireBall";
+
+import SvgFrame from "./component/SvgFrame";
 
 const Frame = styled.div`
   height: 100vh;
@@ -9,7 +10,7 @@ const Frame = styled.div`
 function App() {
   return (
     <Frame>
-      <FireBall height="300px" width="300px"></FireBall>
+      <SvgFrame></SvgFrame>
     </Frame>
   );
 }
