@@ -9,15 +9,12 @@ function SvgFrame({ height = "100%", width = "100%" }) {
     <div
       onClick={() => {
         console.log("click");
-        setActions([
-          ...actions,
-          <FireBall key={actions.length} time={2}></FireBall>,
-        ]);
+        setActions([...actions, true]);
       }}
     >
-      <svg height={height} width={width}>
-        {actions.length > 0 ? actions : null}
-      </svg>
+      {actions.map((x, i) => {
+        return <FireBall key={i} time={10}></FireBall>;
+      })}
     </div>
   );
 }
