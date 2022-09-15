@@ -10,21 +10,15 @@ function FireBall({ time = 1 }) {
   }, [time, check, setCheck]);
 
   return (
-    <svg height={"300px"} width={"100%"}>
+    <svg>
       {!check ? (
-        <rect x={"0px"} y={"10px"} height={"10px"} width={"10px"} fill={"red"}>
-          {/* <animate
-            attributeName="rx"
-            values="0;50;0"
-            dur="10s"
-            repeatCount="indefinite"
-          /> */}
+        <circle cx={0} cy={10} r={5} fill={"red"}>
           <animateMotion
             dur={`${time}s`}
             repeatCount="definite"
             path="M 0 0 l 200 0  M 200 0 l -200 0"
           />
-        </rect>
+        </circle>
       ) : (
         <rect x={"0px"} y={"10px"} height={"10px"} width={"10px"} fill={"red"}>
           <animate
