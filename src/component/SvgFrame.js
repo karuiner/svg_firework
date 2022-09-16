@@ -1,25 +1,19 @@
 import { useState } from "react";
 import styled from "styled-components";
 import FireBall from "./FireBall";
-const Frame = styled.div`
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-`;
-function SvgFrame({ height = "100%", width = "100%" }) {
+function SvgFrame() {
   let [actions, setActions] = useState([]);
-  console.log(actions);
   return (
     <svg
-      height={"99vh"}
-      width={"99vw"}
+      height={window.innerHeight}
+      width={window.innerWidth}
+      viewBox={`0 0 ${window.innerWidth} ${window.innerHeight}`}
       onClick={() => {
-        console.log("click");
-        setActions([...actions, true]);
+        setActions([...actions, Math.random()]);
       }}
     >
       {actions.map((x, i) => {
-        return <FireBall key={i} time={10}></FireBall>;
+        return <FireBall key={i} time={3} rnd={x}></FireBall>;
       })}
     </svg>
   );
