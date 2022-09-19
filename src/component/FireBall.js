@@ -21,10 +21,11 @@ function FireBall({ time = 1, rnd }) {
       return () => {
         setTimeout(() => {
           setCheck2(true);
+          setPtc([]);
         }, time * 1000);
       };
     }, time * 1000);
-  }, [time, check, setCheck]);
+  }, [time, check, setCheck, check2, setCheck2]);
 
   return (
     <svg>
@@ -51,7 +52,9 @@ function FireBall({ time = 1, rnd }) {
             fill="transparent"
           ></path>
         </>
-      ) : null}
+      ) : (
+        <> </>
+      )}
       {check && !check2 ? (
         <>
           {ptc.map((x, i) => {
@@ -63,31 +66,28 @@ function FireBall({ time = 1, rnd }) {
                 <circle
                   cx={window.innerWidth * 0.5}
                   cy={window.innerHeight * (0.4 - rnd * 0.2)}
-                  // cx={0}
-                  // cy={0}
-                  r={3}
+                  r={2}
                   fill={"red"}
                 >
+                  <animate
+                    attributeName="opacity"
+                    values="0;1;0"
+                    dur={`${Math.random() / 2}s`}
+                    repeatCount="indefinite"
+                  />
                   <animateMotion
                     dur={`${time}s`}
                     repeatCount="definite"
                     path={`M 0 0 L ${rx} ${-ry}`}
                   />
                 </circle>
-                {/* <path
-                  d={`M ${window.innerWidth * 0.5} ${
-                    window.innerHeight * (0.4 - rnd * 0.2)
-                  } L ${window.innerWidth * 0.5 + rx} ${
-                    window.innerHeight * (0.4 - rnd * 0.2) - ry
-                  }`}
-                  stroke="black"
-                  fill="transparent"
-                ></path> */}
               </svg>
             );
           })}
         </>
-      ) : null}
+      ) : (
+        <></>
+      )}
     </svg>
   );
 }
